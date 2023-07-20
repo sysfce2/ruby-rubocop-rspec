@@ -4225,6 +4225,60 @@ expect(foo.something?).to be_truthy
 * https://rspec.rubystyle.guide/#predicate-matchers
 * https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/PredicateMatcher
 
+== RSpec/ProperlyItSpecify
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Pending
+| Yes
+| Yes
+| <<next>>
+| -
+|===
+
+Check for `specify` and `it` are used properly.
+
+Use specify if the example doesn't have a description,
+use it for examples with descriptions.
+
+=== Examples
+
+[source,ruby]
+----
+# bad
+it do
+  # ...
+end
+
+# good
+specify do
+  # ...
+end
+
+# bad
+specify 'it sends an email' do
+  # ...
+end
+
+# good
+it 'sends an email' do
+  # ...
+end
+
+# bad
+specify { is_expected.to be_truthy }
+
+# good
+it { is_expected.to be_truthy }
+specify { expect(sqrt(4)).to eq(2) }
+----
+
+=== References
+
+* https://rspec.rubystyle.guide/#it-and-specify
+* https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/ProperlyItSpecify
+
 == RSpec/ReceiveCounts
 
 |===

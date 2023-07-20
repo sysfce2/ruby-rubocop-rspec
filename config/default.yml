@@ -724,6 +724,13 @@ RSpec/PredicateMatcher:
   StyleGuide: https://rspec.rubystyle.guide/#predicate-matchers
   Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/PredicateMatcher
 
+RSpec/ProperlyItSpecify:
+  Description: Check for `specify` and `it` are used properly.
+  Enabled: pending
+  VersionAdded: "<<next>>"
+  StyleGuide: https://rspec.rubystyle.guide/#it-and-specify
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/ProperlyItSpecify
+
 RSpec/ReceiveCounts:
   Description: Check for `once` and `twice` receive counts matchers usage.
   Enabled: true

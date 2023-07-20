@@ -13,6 +13,7 @@
 - Fix `RSpec/NamedSubject` when block has no body. ([@splattael])
 - Fix `RSpec/LetBeforeExamples` autocorrect incompatible with `RSpec/ScatteredLet` autocorrect. ([@ydah])
 - Update `RSpec/Focus` to support `shared_context` and `shared_examples` ([@tmaier])
+- Add new `RSpec/ProperlyItSpecify` cop. ([@ydah])
 
 ## 2.22.0 (2023-05-06)
 
