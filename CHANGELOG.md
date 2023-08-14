@@ -3,6 +3,7 @@
 ## Master (Unreleased)
 
 - Add support single quoted string and percent string and heredoc for `RSpec/Rails/HttpStatus`. ([@ydah])
+- Add new `RSpec/RedundantPredicateMatcher` cop. ([@ydah])
 
 ## 2.24.1 (2023-09-23)
 
@@ -17,6 +18,7 @@
 - Fix an infinite loop error when `RSpec/ExcessiveDocstringSpacing` finds a description with non-ASCII leading/trailing whitespace. ([@bcgraham])
 - Fix an incorrect autocorrect for `RSpec/ReceiveMessages` when return values declared between stubs. ([@marocchino])
 - Fix a false positive `RSpec/Focus` when chained method call and inside define method. ([@ydah])
+- Split `RSpec/FilePath` into `RSpec/SpecFilePathSuffix` and `RSpec/SpecFilePathFormat`. `RSpec/FilePath` cop is enabled by default, the two new cups are pending and need to be enabled explicitly. ([@ydah])
 
 ## 2.23.2 (2023-08-09)
 
