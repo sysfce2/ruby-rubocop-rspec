@@ -299,12 +299,40 @@ RSpec.describe RuboCop::Cop::RSpec::SpecFilePathFormat, :config do
     end
   end
 
-  context 'when configured with `CustomTransform: { "FooFoo" => "foofoo" }`' do
-    let(:cop_config) { { 'CustomTransform' => { 'FooFoo' => 'foofoo' } } }
+  context 'when configured with `CustomTransform: { "RSpec" => "rspec" }`' do
+    let(:cop_config) { { 'CustomTransform' => { 'RSpec' => 'rspec' } } }
+    let(:suffix) { 'foo/some/r_spec_foo*bar*_spec.rb' }
 
-    it 'does not register an offense for custom module name transformation' do
-      expect_no_global_offenses(<<-RUBY, 'foofoo/some/class/bar_spec.rb')
-        describe FooFoo::Some::Class, '#bar' do; end
+    it 'registers an offense when not an exact match to custom ' \
+       'module name transformation' do
+      expect_global_offense(<<-RUBY, 'foo/some/rspec_foo/bar_spec.rb', message)
+        describe Foo::Some::RSpecFoo, '#bar' do; end
+      RUBY
+    end
+
+    it 'does not register an offense when an exact match to custom ' \
+       'module name transformation' do
+      expect_no_global_offenses(<<-RUBY, 'rspec/some/foo/bar_spec.rb')
+        describe RSpec::Some::Foo, '#bar' do; end
+      RUBY
+    end
+  end
+
+  context 'when configured with `CustomTransformPatterns: ' \
+          '{ "RSpec" => "rspec" }`' do
+    let(:cop_config) { { 'CustomTransformPatterns' => { 'RSpec' => 'rspec' } } }
+
+    it 'does not register an offense when not an exact match to custom ' \
+       'module name transformation' do
+      expect_no_global_offenses(<<-RUBY, 'foo/some/rspec_foo/bar_spec.rb')
+        describe Foo::Some::RSpecFoo, '#bar' do; end
+      RUBY
+    end
+
+    it 'does not register an offense when an exact match to custom ' \
+       'module name transformation' do
+      expect_no_global_offenses(<<-RUBY, 'rspec/some/foo/bar_spec.rb')
+        describe RSpec::Some::Foo, '#bar' do; end
       RUBY
     end
   end

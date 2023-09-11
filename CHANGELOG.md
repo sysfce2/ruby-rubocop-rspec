@@ -3,6 +3,7 @@
 ## Master (Unreleased)
 
 - Add support single quoted string and percent string and heredoc for `RSpec/Rails/HttpStatus`. ([@ydah])
+- Add configuration option `CustomTransformPatterns` to `RSpec/SpecFilePathFormat`. ([@ydah])
 
 ## 2.24.1 (2023-09-23)
 

@@ -5127,7 +5127,7 @@ it 'works', :a, :b, baz: true, foo: 'bar'
 | Yes
 | No
 | 2.24
-| -
+| <<next>>
 |===
 
 Checks that spec file paths are consistent and well-formed.
@@ -5153,6 +5153,24 @@ my_class/method_spec.rb  # describe MyClass, '#method'
 # good
 rubocop_spec.rb          # describe RuboCop
 rspec_spec.rb            # describe RSpec
+----
+
+==== `CustomTransformPatterns: {}` (default)
+
+[source,ruby]
+----
+# bad
+rspec_spec.rb            # describe RSpec
+rspec_class_spec.rb      # describe RSpecClass
+----
+
+==== `CustomTransformPatterns: {RSpec=>rspec}`
+
+[source,ruby]
+----
+# good
+rspec_spec.rb            # describe RSpec
+rspec_class_spec.rb      # describe RSpecClass
 ----
 
 ==== `IgnoreMethods: false` (default)
@@ -5194,6 +5212,10 @@ whatever_spec.rb         # describe MyClass, type: :routing do; end
 
 | CustomTransform
 | `{"RuboCop"=>"rubocop", "RSpec"=>"rspec"}`
+| 
+
+| CustomTransformPatterns
+| `{}`
 | 
 
 | IgnoreMethods
