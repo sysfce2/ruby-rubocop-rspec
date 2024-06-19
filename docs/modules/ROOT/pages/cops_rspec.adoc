@@ -197,11 +197,11 @@ expect(foo).to be(true)
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | Command-line only
 | 2.20
-| <<next>>
+| 2.31
 |===
 
 Prefer using `be_empty` when checking for an empty array.
@@ -227,7 +227,7 @@ expect(array).to be_empty
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | No
 | Always (Unsafe)
 | 2.9.0
@@ -323,7 +323,7 @@ expect(foo).to be(nil)
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | Always
 | 2.9.0
@@ -426,7 +426,7 @@ end
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | Always
 | 2.11
@@ -516,7 +516,7 @@ expect { run }
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | Always
 | 2.13
@@ -573,7 +573,7 @@ expect(object).to be_a_kind_of(String)
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | Always
 | 2.19
@@ -1122,7 +1122,7 @@ end
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | Always
 | 2.16
@@ -1155,7 +1155,7 @@ describe 'Something', :a
 | Yes
 | Command-line only (Unsafe)
 | 1.7
-| <<next>>
+| 2.31
 |===
 
 Checks if an example group does not include any tests.
@@ -1209,7 +1209,7 @@ end
 | Yes
 | Command-line only
 | 1.39
-| <<next>>
+| 2.31
 |===
 
 Checks for empty before and after hooks.
@@ -1508,11 +1508,11 @@ let(:foo) { bar }
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | Command-line only
 | 2.24
-| <<next>>
+| 2.31
 |===
 
 Avoid empty metadata hash.
@@ -1539,7 +1539,7 @@ describe 'Something'
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | Always
 | 2.29
@@ -1570,7 +1570,7 @@ expect { bar }.to output.to_stderr
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | Always
 | 2.24
@@ -1870,7 +1870,7 @@ end
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | Always
 | 2.5
@@ -2060,10 +2060,10 @@ end
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | No
-| <<next>>
+| 2.30
 | -
 |===
 
@@ -2129,7 +2129,7 @@ expect { my_app.print_report }.to output('Hello World').to_stdout
 | Yes
 | Command-line only
 | 1.5
-| <<next>>
+| 2.31
 |===
 
 Checks if examples are focused.
@@ -2291,7 +2291,7 @@ end
 | Yes
 | Command-line only
 | 1.29
-| <<next>>
+| 2.31
 |===
 
 Checks for before/around/after hooks that come after an example.
@@ -2326,7 +2326,7 @@ end
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | No
 | 2.4
@@ -2551,7 +2551,7 @@ it { expect(named_subject).to be_truthy }
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | No
 | 2.20
@@ -2756,7 +2756,7 @@ end
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | Always
 | 2.27
@@ -3046,7 +3046,7 @@ end
 | Yes
 | Command-line only
 | 1.16
-| <<next>>
+| 2.31
 |===
 
 Checks for `let` definitions that come after an example.
@@ -3133,7 +3133,7 @@ end
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | Always
 | 2.19
@@ -3318,7 +3318,7 @@ do_something
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | Always
 | 2.24
@@ -3405,6 +3405,42 @@ end
 === References
 
 * https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/MissingExampleGroupArgument
+
+== RSpec/MissingExpectationTargetMethod
+
+|===
+| Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
+
+| Enabled
+| Yes
+| No
+| 3.0
+| -
+|===
+
+Checks if `.to`, `not_to` or `to_not` are used.
+
+The RSpec::Expectations::ExpectationTarget must use `to`, `not_to` or
+`to_not` to run. Therefore, this cop checks if other methods are used.
+
+=== Examples
+
+[source,ruby]
+----
+# bad
+expect(something).kind_of? Foo
+is_expected == 42
+expect{something}.eq? BarError
+
+# good
+expect(something).to be_a Foo
+is_expected.to eq 42
+expect{something}.to raise_error BarError
+----
+
+=== References
+
+* https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/MissingExpectationTargetMethod
 
 == RSpec/MultipleDescribes
 
@@ -3999,7 +4035,7 @@ end
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | No
 | No
 | 2.13
@@ -4234,7 +4270,7 @@ end
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | No
 | 2.16
@@ -4449,7 +4485,7 @@ expect(foo).to receive(:bar).at_most(:twice).times
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | Always (Unsafe)
 | 2.23
@@ -4524,7 +4560,7 @@ expect(foo).not_to receive(:bar)
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | Always
 | 2.19
@@ -4554,7 +4590,7 @@ end
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | Always
 | 2.26
@@ -4587,7 +4623,7 @@ expect(foo).to all be(bar)
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | No
 | 2.26
@@ -4886,7 +4922,7 @@ end
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | No
 | 2.27
@@ -5002,7 +5038,7 @@ allow(Foo).to receive(:bar).and_return(bar.baz)
 | Yes
 | Command-line only
 | 1.14
-| <<next>>
+| 2.31
 |===
 
 Checks for let scattered across the example group.
@@ -5045,7 +5081,7 @@ end
 | Yes
 | Command-line only
 | 1.10
-| <<next>>
+| 2.31
 |===
 
 Checks for setup scattered across multiple hooks in an example group.
@@ -5254,7 +5290,7 @@ allow(foo).to receive("bar.baz")
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | No
 | 2.19
@@ -5294,7 +5330,7 @@ end
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | Always
 | 2.14
@@ -5327,7 +5363,7 @@ it 'works', :a, :b, baz: true, foo: 'bar'
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | No
 | 2.24
@@ -5418,7 +5454,7 @@ whatever_spec.rb         # describe MyClass, type: :routing do; end
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | No
 | 2.24
@@ -5492,7 +5528,7 @@ expect(foo).to receive(:bar).with(42)
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | No
 | 2.5
@@ -5590,7 +5626,7 @@ end
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | No
 | 2.29
@@ -5835,7 +5871,7 @@ let(:userFood_2) { 'fettuccine' }
 |===
 | Enabled by default | Safe | Supports autocorrection | Version Added | Version Changed
 
-| Pending
+| Enabled
 | Yes
 | Always (Unsafe)
 | 2.10.0

@@ -7,6 +7,15 @@
 [RSpec](https://rspec.info/)-specific analysis for your projects, as an extension to
 [RuboCop](https://github.com/rubocop/rubocop).
 
+- [Installation](#installation)
+  - [Upgrading to RuboCop RSpec v3.x](#upgrading-to-rubocop-rspec-v3x)
+  - [Upgrading to RuboCop RSpec v2.x](#upgrading-to-rubocop-rspec-v2x)
+- [Usage](#usage)
+- [Documentation](#documentation)
+- [The Cops](#the-cops)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Installation
 
 Just install the `rubocop-rspec` gem
@@ -20,6 +29,10 @@ or if you use bundler put this in your `Gemfile`
 ```ruby
 gem 'rubocop-rspec', require: false
 ```
+
+### Upgrading to RuboCop RSpec v3.x
+
+Read all the details in our [Upgrade to Version 3.x](https://docs.rubocop.org/rubocop-rspec/3.0/upgrade_to_version_3.html) document.
 
 ### Upgrading to RuboCop RSpec v2.x
 

@@ -2,12 +2,33 @@
 
 ## Master (Unreleased)
 
+- Fix wrong autocorrect for `RSpec/ScatteredSetup` when hook contains heredoc. ([@earlopain])
+- Fix false negative for `RSpec/PredicateMatcher` when expectation contains custom failure message. ([@earlopain])
+
+## 3.0.1 (2024-06-11)
+
+- Bump RuboCop requirement to +1.61. ([@ydah])
+
+## 3.0.0 (2024-06-11)
+
 - Remove extracted cops in `Capybara`, `FactoryBot` and `Rails` departments. ([@ydah])
 - Remove `RuboCop::RSpec::Language::NodePattern`. ([@ydah])
 - Remove `RSpec/FilePath` cop. ([@ydah])
-- Add new `RSpec/ExpectInLet` cop. ([@yasu551])
 - Remove `RSpec/Capybara/FeatureMethods` cop. If you are using this cop, change it to use `RSpec/Dialect`. ([@ydah])
+- Add new `RSpec/MissingExpectationTargetMethod` cop. ([@krororo])
+- Fix an error for `RSpec/ScatteredSetup` when one of the hooks is an empty block. ([@earlopain])
+
+These previously pending cops are now enabled by default: `RSpec/BeEmpty`, `RSpec/BeEq`, `RSpec/BeNil`, `RSpec/ChangeByZero`, `RSpec/ClassCheck`, `RSpec/ContainExactly`, `RSpec/DuplicatedMetadata`, `RSpec/EmptyMetadata`, `RSpec/EmptyOutput`, `RSpec/Eq`, `RSpec/ExcessiveDocstringSpacing`, `RSpec/ExpectInLet`, `RSpec/IdenticalEqualityAssertion`, `RSpec/IndexedLet`, `RSpec/IsExpectedSpecify`, `RSpec/MatchArray`, `RSpec/MetadataStyle`, `RSpec/NoExpectationExample`, `RSpec/PendingWithoutReason`, `RSpec/ReceiveMessages`, `RSpec/RedundantAround`, `RSpec/RedundantPredicateMatcher`, `RSpec/RemoveConst`, `RSpec/RepeatedSubjectCall`, `RSpec/SkipBlockInsideExample`, `RSpec/SortMetadata`, `RSpec/SpecFilePathFormat`, `RSpec/SpecFilePathSuffix`, `RSpec/SubjectDeclaration`, `RSpec/UndescriptiveLiteralsDescription`, and `RSpec/VerifiedDoubleReference`.
+
+Read more about how to upgrade in https://docs.rubocop.org/rubocop-rspec/upgrade_to_version_3.html
+
+## 2.31.0 (2024-06-07)
+
 - Support `AutoCorrect: contextual` option for LSP. ([@ydah])
+
+## 2.30.0 (2024-06-03)
+
+- Add new `RSpec/ExpectInLet` cop. ([@yasu551])
 
 ## 2.29.2 (2024-05-02)
 
@@ -892,6 +913,7 @@ Compatibility release so users can upgrade RuboCop to 0.51.0. No new features.
 [@drowze]: https://github.com/Drowze
 [@dswij]: https://github.com/dswij
 [@dvandersluis]: https://github.com/dvandersluis
+[@earlopain]: https://github.com/earlopain
 [@edgibbs]: https://github.com/edgibbs
 [@eikes]: https://github.com/eikes
 [@eitoball]: https://github.com/eitoball
@@ -923,6 +945,7 @@ Compatibility release so users can upgrade RuboCop to 0.51.0. No new features.
 [@k-s-a]: https://github.com/K-S-A
 [@kellysutton]: https://github.com/kellysutton
 [@koic]: https://github.com/koic
+[@krororo]: https://github.com/krororo
 [@kuahyeow]: https://github.com/kuahyeow
 [@lazycoder9]: https://github.com/lazycoder9
 [@leoarnold]: https://github.com/leoarnold
